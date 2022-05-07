@@ -1,0 +1,15 @@
+.navbarItem {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  i {
+    width: 24px;
+  }
+
+  .navbarTitle {
+    font-weight: bold;
+    color: #fe5858;
+  }
+}

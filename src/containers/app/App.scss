@@ -1,0 +1,20 @@
+.App {
+  background-color: #42378f;
+  background-image: linear-gradient(315deg, #42378f 0%, #f53844 74%);
+
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  .AppContent {
+    width: 100%;
+    background: #fbfbfb;
+    width: 375px;
+    height: 576px;
+    -webkit-box-shadow: 1px 1px 4px 0px rgba(153, 153, 153, 1);
+    -moz-box-shadow: 1px 1px 4px 0px rgba(153, 153, 153, 1);
+    box-shadow: 1px 1px 4px 0px rgba(153, 153, 153, 1);
+  }
+}
