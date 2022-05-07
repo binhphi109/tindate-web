@@ -1,7 +1,7 @@
 import React from "react";
-import './Home.scss';
+import "./Home.scss";
 
-const Home = () => {
+function Home() {
   return (
     <div className="App">
       <header className="App-header">
@@ -19,6 +19,6 @@ const Home = () => {
       </header>
     </div>
   );
-};
+}
 
 export default Home;
