@@ -18,4 +18,4 @@ services:
       - ./conf/conf.d:/etc/nginx/conf.d
     environment: 
       NODE_ENV: development
-      API_HOST: http://tinder-api:3000
+      API_URL: http://tinder-api:3000

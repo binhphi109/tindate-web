@@ -1,3 +1,4 @@
 window.env = {
-API_HOST: "http://localhost:3000",
+API_URL: "http://localhost:3000",
+PORT: "8080",
 }
