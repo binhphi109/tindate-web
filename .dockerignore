@@ -1,0 +1,6 @@
+.git
+.vscode
+tmp
+log
+node_modules
+build/env-config.js

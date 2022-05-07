@@ -1,0 +1,21 @@
+version: "3.4"
+
+networks:
+  tinder-api_network:
+    external: true
+  network:
+    driver: bridge
+
+services:
+  tinder-webapp:
+    build: .
+    ports:
+      - 3000:80
+    networks:
+      - tinder-api_network
+      - network
+    volumes:
+      - ./conf/conf.d:/etc/nginx/conf.d
+    environment: 
+      NODE_ENV: development
+      API_HOST: http://tinder-api:3000
