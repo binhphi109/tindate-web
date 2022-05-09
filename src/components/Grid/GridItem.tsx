@@ -4,18 +4,18 @@ import "./GridItem.scss";
 
 type Props = {
   className?: string;
-  imageUrl: string;
+  image: string;
   title: string;
   subtitle: string;
 };
 
-function GridItem({ className, imageUrl, title, subtitle }: Props) {
+function GridItem({ className, image, title, subtitle }: Props) {
   return (
     <div className={clsx("gridItem", className)}>
       <div
         className="gridItemImage"
         style={{
-          backgroundImage: `url(${imageUrl})`,
+          backgroundImage: `url(${image})`,
         }}
       />
       <div className="gridItemFooter">

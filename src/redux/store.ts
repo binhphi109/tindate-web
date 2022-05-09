@@ -2,7 +2,7 @@ import { Action, configureStore, ThunkAction } from "@reduxjs/toolkit";
 import { setupListeners } from "@reduxjs/toolkit/query";
 import { useDispatch } from "react-redux";
 
-import rootReducer from "./reducers";
+import rootReducer from "./rootReducer";
 
 export const store = configureStore({
   reducer: {

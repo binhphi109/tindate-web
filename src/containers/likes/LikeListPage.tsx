@@ -1,92 +1,56 @@
-import Grid from "components/Grid/Grid";
-import GridItem from "components/Grid/GridItem";
-import NavBar from "components/NavBar/NavBar";
-import NavBarItem from "components/NavBar/NavBarItem";
-import React from "react";
+import Snackbar from "common/Snackbar";
+import Grid from "components/grid/Grid";
+import GridItem from "components/grid/GridItem";
+import NavBar from "components/navbar/NavBar";
+import NavBarItem from "components/navbar/NavBarItem";
+import React, { useEffect } from "react";
+import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
+import { selectAuth } from "redux/auth";
+import { fetchLikes, selectLikes } from "redux/likes";
+import { useAppDispatch } from "redux/store";
+import { getAge } from "utils/dateUtils";
+import EmptyWrapper from "../../components/wrapper/EmptyWrapper";
 import "./LikeListPage.scss";
 
 function LikeListPage() {
   const navigate = useNavigate();
+  const dispatch = useAppDispatch();
 
-  const likes = [
-    {
-      avartar:
-        "https://images.unsplash.com/photo-1633504106408-eb53fa19886b?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1742&q=80",
-      name: "Lucienne Trevode",
-      age: "12",
-    },
-    {
-      avartar:
-        "https://images.unsplash.com/photo-1633504106408-eb53fa19886b?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1742&q=80",
-      name: "Lucienne Trevode",
-      age: "12",
-    },
+  const { likes } = useSelector(selectLikes);
+  const { currentUser } = useSelector(selectAuth);
 
-    {
-      avartar:
-        "https://images.unsplash.com/photo-1633504106408-eb53fa19886b?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1742&q=80",
-      name: "Lucienne Trevode",
-      age: "12",
-    },
-    {
-      avartar:
-        "https://images.unsplash.com/photo-1633504106408-eb53fa19886b?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1742&q=80",
-      name: "Lucienne Trevode",
-      age: "12",
-    },
-    {
-      avartar:
-        "https://images.unsplash.com/photo-1633504106408-eb53fa19886b?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1742&q=80",
-      name: "Lucienne Trevode",
-      age: "12",
-    },
-
-    {
-      avartar:
-        "https://images.unsplash.com/photo-1633504106408-eb53fa19886b?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1742&q=80",
-      name: "Lucienne Trevode",
-      age: "12",
-    },
-    {
-      avartar:
-        "https://images.unsplash.com/photo-1633504106408-eb53fa19886b?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1742&q=80",
-      name: "Lucienne Trevode",
-      age: "12",
-    },
-    {
-      avartar:
-        "https://images.unsplash.com/photo-1633504106408-eb53fa19886b?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1742&q=80",
-      name: "Lucienne Trevode",
-      age: "12",
-    },
-
-    {
-      avartar:
-        "https://images.unsplash.com/photo-1633504106408-eb53fa19886b?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1742&q=80",
-      name: "Lucienne Trevode",
-      age: "12",
-    },
-  ];
+  useEffect(() => {
+    if (currentUser) {
+      dispatch(fetchLikes(currentUser._id))
+        .unwrap()
+        .catch((error) => {
+          Snackbar.error(error.message);
+        });
+    }
+  }, [currentUser]);
 
   return (
     <div className="likeListPage">
       <NavBar>
-        <NavBarItem
-          className="navbarButton"
-          icon="fas fa-chevron-left"
-          onClick={() => navigate("/")}
-        />
-        <NavBarItem className="navbarButton" title="Likes" />
-        <NavBarItem className="navbarButton" />
+        <NavBarItem icon="fas fa-chevron-left" onClick={() => navigate("/")} />
+        <NavBarItem title="Likes" />
+        <NavBarItem />
       </NavBar>
 
       <div className="pageContent">
-        <Grid>
-          {likes?.map((like) => (
-            <GridItem imageUrl={like.avartar} title={like.name} subtitle={like.age} />
-          ))}
-        </Grid>
+        <EmptyWrapper data={likes}>
+          <Grid>
+            {likes?.map((like) => (
+              <GridItem
+                key={like._id}
+                image={like.avatar}
+                title={like.name}
+                subtitle={`${getAge(like.birthDate)}`}
+              />
+            ))}
+          </Grid>
+        </EmptyWrapper>
       </div>
     </div>
   );

@@ -1,0 +1,22 @@
+.emptyWrapper {
+  height: 100%;
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  color: #b3b3b3;
+
+  i {
+    font-size: 50px;
+    margin-bottom: 16px;
+  }
+
+  .title {
+    font-weight: bold;
+  }
+
+  .description {
+    font-size: 12px;
+  }
+}

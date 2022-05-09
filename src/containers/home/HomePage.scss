@@ -1,5 +1,13 @@
 .homePage {
+  height: 100%;
   color: black;
+  display: flex;
+  flex-direction: column;
+
+  .mySwiper {
+    width: 375px;
+    height: 432px;
+  }
 
   .reaction {
     padding: 16px;

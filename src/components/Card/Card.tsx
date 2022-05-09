@@ -4,18 +4,18 @@ import "./Card.scss";
 
 type Props = {
   className?: string;
-  imageUrl: string;
+  image: string;
   title: string;
   subtitle: string;
 };
 
-function Card({ className, imageUrl, title, subtitle }: Props) {
+function Card({ className, image, title, subtitle }: Props) {
   return (
     <div className={clsx("card", className)}>
       <div
         className="cardImage"
         style={{
-          backgroundImage: `url(${imageUrl})`,
+          backgroundImage: `url(${image})`,
         }}
       />
       <div className="cardFooter">

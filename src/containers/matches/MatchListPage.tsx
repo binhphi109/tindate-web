@@ -1,83 +1,58 @@
-import List from "components/List/List";
-import ListItem from "components/List/ListItem";
-import NavBar from "components/NavBar/NavBar";
-import NavBarItem from "components/NavBar/NavBarItem";
-import React from "react";
+import Snackbar from "common/Snackbar";
+import List from "components/list/List";
+import ListItem from "components/list/ListItem";
+import NavBar from "components/navbar/NavBar";
+import NavBarItem from "components/navbar/NavBarItem";
+import EmptyWrapper from "components/wrapper/EmptyWrapper";
+import React, { useEffect } from "react";
+import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
+import { selectAuth } from "redux/auth";
+import { selectLikes } from "redux/likes";
+import { fetchMatches, selectMatches } from "redux/matches";
+import { useAppDispatch } from "redux/store";
+import { getAge } from "utils/dateUtils";
 import "./MatchListPage.scss";
 
 function MatchListPage() {
   const navigate = useNavigate();
+  const dispatch = useAppDispatch();
 
-  const matches = [
-    {
-      avartar:
-        "https://images.unsplash.com/photo-1633504106408-eb53fa19886b?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1742&q=80",
-      name: "Lucienne Trevode",
-      age: "12",
-    },
-    {
-      avartar:
-        "https://images.unsplash.com/photo-1633504106408-eb53fa19886b?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1742&q=80",
-      name: "Lucienne Trevode",
-      age: "12",
-    },
-    {
-      avartar:
-        "https://images.unsplash.com/photo-1633504106408-eb53fa19886b?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1742&q=80",
-      name: "Lucienne Trevode",
-      age: "12",
-    },
-    {
-      avartar:
-        "https://images.unsplash.com/photo-1633504106408-eb53fa19886b?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1742&q=80",
-      name: "Lucienne Trevode",
-      age: "12",
-    },
-    {
-      avartar:
-        "https://images.unsplash.com/photo-1633504106408-eb53fa19886b?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1742&q=80",
-      name: "Lucienne Trevode",
-      age: "12",
-    },
-    {
-      avartar:
-        "https://images.unsplash.com/photo-1633504106408-eb53fa19886b?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1742&q=80",
-      name: "Lucienne Trevode",
-      age: "12",
-    },
-    {
-      avartar:
-        "https://images.unsplash.com/photo-1633504106408-eb53fa19886b?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1742&q=80",
-      name: "Lucienne Trevode",
-      age: "12",
-    },
-    {
-      avartar:
-        "https://images.unsplash.com/photo-1633504106408-eb53fa19886b?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1742&q=80",
-      name: "Lucienne Trevode",
-      age: "12",
-    },
-  ];
+  const { likes } = useSelector(selectLikes);
+  const { matches } = useSelector(selectMatches);
+  const { currentUser } = useSelector(selectAuth);
+
+  useEffect(() => {
+    if (currentUser) {
+      dispatch(fetchMatches(currentUser._id))
+        .unwrap()
+        .catch((error) => {
+          Snackbar.error(error.message);
+        });
+    }
+  }, [currentUser, likes]);
 
   return (
     <div className="matchListPage">
       <NavBar>
-        <NavBarItem
-          className="navbarButton"
-          icon="fas fa-chevron-left"
-          onClick={() => navigate("/")}
-        />
-        <NavBarItem className="navbarButton" title="Matches" />
-        <NavBarItem className="navbarButton" />
+        <NavBarItem icon="fas fa-chevron-left" onClick={() => navigate("/")} />
+        <NavBarItem title="Matches" />
+        <NavBarItem />
       </NavBar>
 
       <div className="pageContent">
-        <List>
-          {matches?.map((match) => (
-            <ListItem imageUrl={match.avartar} title={match.name} subtitle={match.age} />
-          ))}
-        </List>
+        <EmptyWrapper data={matches}>
+          <List>
+            {matches?.map((match) => (
+              <ListItem
+                key={match._id}
+                image={match.avatar}
+                title={match.name}
+                subtitle={`${getAge(match.birthDate)}`}
+              />
+            ))}
+          </List>
+        </EmptyWrapper>
       </div>
     </div>
   );

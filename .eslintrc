@@ -28,6 +28,7 @@
         "ignorePropertyModificationsFor": ["state"]
       }
     ],
+    "no-underscore-dangle": ["error", { "allow": ["_id"] }],
     "react/jsx-curly-brace-presence": "warn",
     "jsx-a11y/no-static-element-interactions": "off",
     "jsx-a11y/click-events-have-key-events": "off"

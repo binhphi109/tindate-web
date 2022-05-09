@@ -4,19 +4,19 @@ import "./ListItem.scss";
 
 type Props = {
   className?: string;
-  imageUrl: string;
+  image: string;
   title: string;
   subtitle: string;
 };
 
-function ListItem({ className, imageUrl, title, subtitle }: Props) {
+function ListItem({ className, image, title, subtitle }: Props) {
   return (
     <div className={clsx("listItem", className)}>
       <div className="listItemImageContainer">
         <div
           className="listItemImage"
           style={{
-            backgroundImage: `url(${imageUrl})`,
+            backgroundImage: `url(${image})`,
           }}
         />
       </div>
