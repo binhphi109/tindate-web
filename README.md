@@ -22,13 +22,13 @@ You can either run it manually or using Docker commands to spawns up all the sta
    1. `yarn`
    2. `yarn start`
 
-You can now access to API-Endpoints through [http://localhost:8080/](http://localhost:8080/).
+You can now access to WebApp through [http://localhost:8080/](http://localhost:8080/).
 
 #### Docker
 
 Run the following commands: `docker-compose up`
 
-You can now access to API-Endpoints through
+You can now access to WebApp through
 
 - [http://localhost:8080/](http://localhost:8080/).
 
