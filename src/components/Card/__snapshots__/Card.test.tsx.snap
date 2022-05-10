@@ -1,0 +1,30 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`components/card/Card should match snapshot 1`] = `
+<div
+  className="card"
+>
+  <div
+    className="cardImage"
+    style={
+      Object {
+        "backgroundImage": "url(http://image-url.com)",
+      }
+    }
+  />
+  <div
+    className="cardFooter"
+  >
+    <div
+      className="cardTitle"
+    >
+      Alex
+    </div>
+    <div
+      className="cardSubtitle"
+    >
+      25
+    </div>
+  </div>
+</div>
+`;

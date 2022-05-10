@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@faker-js/faker": "^6.3.1",
     "@material-ui/core": "^4.12.4",
     "@reduxjs/toolkit": "^1.8.1",
     "@testing-library/jest-dom": "^5.14.1",
@@ -53,10 +54,27 @@
       "last 1 safari version"
     ]
   },
+  "jest": {
+    "snapshotSerializers": [
+      "enzyme-to-json/serializer"
+    ],
+    "moduleNameMapper": {
+      "swiper/react": "<rootDir>/node_modules/swiper",
+      "swiper/css": "<rootDir>/node_modules/swiper"
+    },
+    "transformIgnorePatterns": [
+      "node_modules/(?!(@react|@testing-library|swiper|ssr-window|dom7))"
+    ]
+  },
   "devDependencies": {
+    "@types/enzyme": "^3.10.12",
+    "@types/enzyme-adapter-react-16": "^1.0.6",
     "@types/react-redux": "^7.1.24",
     "@typescript-eslint/eslint-plugin": "^5.22.0",
     "@typescript-eslint/parser": "^5.22.0",
+    "enzyme": "^3.11.0",
+    "enzyme-adapter-react-16": "^1.15.6",
+    "enzyme-to-json": "^3.6.2",
     "eslint": "^8.15.0",
     "eslint-config-airbnb": "^19.0.4",
     "eslint-config-airbnb-typescript": "^17.0.0",
@@ -64,6 +82,7 @@
     "eslint-plugin-import": "^2.26.0",
     "eslint-plugin-react": "^7.29.4",
     "eslint-plugin-react-hooks": "^4.5.0",
-    "prettier": "2.6.2"
+    "prettier": "2.6.2",
+    "react-test-renderer": "^18.1.0"
   }
 }

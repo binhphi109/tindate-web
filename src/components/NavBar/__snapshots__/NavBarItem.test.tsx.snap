@@ -1,0 +1,118 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`components/navbar/NavBar should match snapshot with icon 1`] = `
+<div
+  className="navbar"
+>
+  <NavBarItem
+    className={null}
+    color="default"
+    icon="fas fa-tasks"
+    iconColor={null}
+    onClick={[MockFunction]}
+    title={null}
+  />
+  <NavBarItem
+    className={null}
+    color="primary"
+    icon="fas fa-fire"
+    iconColor={null}
+    onClick={null}
+    title={null}
+  />
+  <NavBarItem
+    className={null}
+    color="default"
+    icon="far fa-comment"
+    iconColor={null}
+    onClick={[MockFunction]}
+    title={null}
+  />
+</div>
+`;
+
+exports[`components/navbar/NavBar should match snapshot with title 1`] = `
+<div
+  className="navbar"
+>
+  <NavBarItem
+    className={null}
+    color="default"
+    icon="fas fa-chevron-left"
+    iconColor={null}
+    onClick={[MockFunction]}
+    title={null}
+  />
+  <NavBarItem
+    className={null}
+    color="default"
+    icon={null}
+    iconColor={null}
+    onClick={null}
+    title="Likes"
+  />
+  <NavBarItem
+    className={null}
+    color="default"
+    icon={null}
+    iconColor={null}
+    onClick={null}
+    title={null}
+  />
+</div>
+`;
+
+exports[`components/navbar/NavBarItem should match snapshot with color 1`] = `
+<div
+  className="navbarItem"
+  onClick={null}
+>
+  <WithStyles(ForwardRef(IconButton))
+    color="primary"
+    size="medium"
+  >
+    <i
+      className="fas fa-fire"
+      style={
+        Object {
+          "color": null,
+        }
+      }
+    />
+  </WithStyles(ForwardRef(IconButton))>
+</div>
+`;
+
+exports[`components/navbar/NavBarItem should match snapshot with icon 1`] = `
+<div
+  className="navbarItem"
+  onClick={[MockFunction]}
+>
+  <WithStyles(ForwardRef(IconButton))
+    color="default"
+    size="medium"
+  >
+    <i
+      className="fas fa-tasks"
+      style={
+        Object {
+          "color": null,
+        }
+      }
+    />
+  </WithStyles(ForwardRef(IconButton))>
+</div>
+`;
+
+exports[`components/navbar/NavBarItem should match snapshot with title 1`] = `
+<div
+  className="navbarItem"
+  onClick={null}
+>
+  <div
+    className="navbarTitle"
+  >
+    Likes
+  </div>
+</div>
+`;

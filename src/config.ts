@@ -13,7 +13,7 @@ const Config = {
     title: packageJson.name ?? "Tinder App",
     version: packageJson.version,
   },
-  ApiUrl: window.env.API_URL,
+  ApiUrl: window.env?.API_URL,
 };
 
 export default Config;

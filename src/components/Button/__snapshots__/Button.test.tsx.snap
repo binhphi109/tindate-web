@@ -1,0 +1,85 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`components/button/Button should match snapshot 1`] = `
+<div
+  className="button reactionButton"
+  onClick={[MockFunction]}
+>
+  <WithStyles(ForwardRef(IconButton))
+    color="default"
+    size="medium"
+  >
+    <i
+      className="fas fa-times"
+      style={
+        Object {
+          "color": "#fc575e",
+        }
+      }
+    />
+  </WithStyles(ForwardRef(IconButton))>
+</div>
+`;
+
+exports[`components/button/Button should match snapshot without className 1`] = `
+<div
+  className="button"
+  onClick={[MockFunction]}
+>
+  <WithStyles(ForwardRef(IconButton))
+    color="default"
+    size="medium"
+  >
+    <i
+      className="fas fa-times"
+      style={
+        Object {
+          "color": "#fc575e",
+        }
+      }
+    />
+  </WithStyles(ForwardRef(IconButton))>
+</div>
+`;
+
+exports[`components/button/Button should match snapshot without iconColor  1`] = `
+<div
+  className="button reactionButton"
+  onClick={[MockFunction]}
+>
+  <WithStyles(ForwardRef(IconButton))
+    color="default"
+    size="medium"
+  >
+    <i
+      className="fas fa-times"
+      style={
+        Object {
+          "color": null,
+        }
+      }
+    />
+  </WithStyles(ForwardRef(IconButton))>
+</div>
+`;
+
+exports[`components/button/Button should match snapshot without onClick  1`] = `
+<div
+  className="button reactionButton"
+  onClick={null}
+>
+  <WithStyles(ForwardRef(IconButton))
+    color="default"
+    size="medium"
+  >
+    <i
+      className="fas fa-times"
+      style={
+        Object {
+          "color": null,
+        }
+      }
+    />
+  </WithStyles(ForwardRef(IconButton))>
+</div>
+`;
