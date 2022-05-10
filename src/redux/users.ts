@@ -1,6 +1,6 @@
 import { createAsyncThunk, createReducer } from "@reduxjs/toolkit";
 import type { RootState } from "./store";
-import UserApi from "./apis/users";
+import UserApi from "../services/users";
 import { User, UserAction } from "../types/users";
 
 // actions

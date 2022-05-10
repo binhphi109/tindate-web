@@ -1,6 +1,6 @@
 import axios from "axios";
 import Config from "config";
-import { LikeUserResponse, SuccessResponse, User } from "../../types/users";
+import { LikeUserResponse, SuccessResponse, User } from "../types/users";
 
 const UserApi = {
   async login(): Promise<User> {
